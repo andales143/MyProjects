@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Clothing Images</title>
+
+  </head>
+  <body>
+    <div id="container">
+      <form>
+        <button type="button" onclick="searchClothing()">Generate a random Drip!</button>
+      </form>
+      <img id="clothing" src="https://static.wikia.nocookie.net/joke-battles/images/8/82/Drip_Goku.jpg/revision/latest?cb=20210218133611" />
+    </div>
+
+    <script>
+      function searchClothing() {
+        fetch('https://source.unsplash.com/featured/?clothing')
+          .then(response => {
+            if (response.ok) {
+              document.getElementById('clothing').src = response.url;
+            } else {
+              console.error('Failed to fetch image:', response.status, response.statusText);
+            }
+          })
+          .catch(error => console.error('Error during fetch:', error));
+      }
+    </script>
+  </body>
+
+  <style>
+    body {
+      background-color: #4895c9;
+        font-family: Arial, sans-serif;
+        margin: 0; 
+        padding: 0; 
+        box-sizing: border-box; 
+    }
+    #container {
+        text-align: center;
+        margin-top: 20px;
+        padding: 20px; 
+    }
+    button {
+        padding: 10px;
+        font-size: 15px;
+        border: 2px solid #ffc107;
+            background-color: #6bafdd;
+        cursor: pointer;
+    }
+    img {
+      border: 2px solid #ffc107;
+        max-width: 50%; 
+        height: 45%; 
+        margin-top: 20px;
+    }
+    #message {
+        font-size: 14px;
+        color: white;
+    }
+</style>
+</html>
